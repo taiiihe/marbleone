@@ -1,0 +1,48 @@
+<resources>
+
+    <string name="app_name">Marble One</string>
+    <string name="pebble"></string>
+    <string name="title_hatsoff">Hatsoff Genius</string>
+    <string name="title_oops"></string>
+    <string name="title_gameover">Game Over</string>
+    <string name="title_great">Great Job !!\n But still you can improve</string>
+    <string name="title_time">Time: </string>
+    <string name="title_loading">Loading....</string>
+    <string name="time_zero">00:00:00</string>
+    <string name="title_restart">Restart</string>
+    <string name="title_pause">Pause</string>
+    <string name="title_mute">Mute</string>
+    <string name="title_undo">Undo Move</string>
+    <string name="title_change_marble_color">Change Marble Color</string>
+    <string name="title_resume">Resume</string>
+    <string name="title_help">Help</string>
+    <string name="title_credits">Credits</string>
+    <string name="title_get_points">Get Points</string>
+    <string name="title_congrats">Congrats</string>
+    <string name="title_share_results">Share Results via</string>
+    <string name="title_marble_color">Marble Color</string>
+    <string name="title_select_marble_color">Select Marble Color</string>
+    <string name="title_selected_marble_color">Select Highlighted Marble Color</string>
+    <string name="title_ok">Done</string>
+    <string name="title_score">Score</string>
+    <string name="title_bonus">Bonus</string>
+    <string name="title_total">Total</string>
+    <string name="title_share">Share</string>
+    <string name="title_share_fb">Share on Facebook</string>
+    <string name="app_id">1425764744315068</string>
+    <string name="title_add_score">Add Score To Message</string>
+    <string name="title_add_screenshot">Add Screenshot To Message</string>
+    <string name="title_add_game_link">Add Game Link To Message</string>
+    <string name="title_remove_score">Remove Score From Message</string>
+    <string name="title_remove_screenshot">Remove Screenshot From Message</string>
+    <string name="title_remove_game_link">Remove Game Link From Message</string>
+    <string name="title_submit">Post</string>
+    <string name="title_finished">I had finished Marble One and scored %s</string>
+    <string name="title_game_end">I had scored %s on Marble One </string>
+    <string name="title_to_download">To download Marble One visit http://marbleone.easwareapps.com</string>
+    <string name="title_share_image">Share Image</string>
+    <string name="title_cancel">Cancel</string>
+    <string name="title_write_something">Write Something</string>
+    <string name="title_exit">Exit</string>
+
+</resources>

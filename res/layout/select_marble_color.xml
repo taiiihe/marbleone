@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/title_select_marble_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <HorizontalScrollView
+        android:id="@+id/idScrHorizondalMarble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp" >
+
+            <ImageView
+                android:id="@+id/idImgMarbleBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_blue" />
+
+            <ImageView
+                android:id="@+id/idImgMarbleGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_green" />
+
+            <ImageView
+                android:id="@+id/idImgMarbleMagenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_magenta" />
+
+            <ImageView
+                android:id="@+id/idImgMarbleRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_red" />
+
+            <ImageView
+                android:id="@+id/idImgMarbleTurquoise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_turquoise" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    
+     <TextView
+        android:id="@+id/txtSelectMarbleColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/title_selected_marble_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <HorizontalScrollView
+        android:id="@+id/idScrHorizondalSelectedMarble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp" >
+
+            <ImageView
+                android:id="@+id/idImgSelectedMarbleBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_blue" />
+
+            <ImageView
+                android:id="@+id/idImgSelectedMarbleGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_green" />
+
+            <ImageView
+                android:id="@+id/idImgSelectedMarbleMagenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_magenta" />
+
+            <ImageView
+                android:id="@+id/idImgSelectedMarbleRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_red" />
+
+            <ImageView
+                android:id="@+id/idImgSelectedMarbleTurquoise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_pebble_turquoise" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/btkOk"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="finish"
+        android:text="@string/title_ok" />
+    
+</LinearLayout>
