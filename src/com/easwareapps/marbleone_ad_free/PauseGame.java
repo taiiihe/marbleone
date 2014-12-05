@@ -1,24 +1,4 @@
-/*  Marble One is Peg solitaire for android
-
-    Copyright (C) 2014  Vishnu V vishnu@easwareapps.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package com.easwareapps.marbleone_ad_free;
-
-
-import com.easwareapps.marbleone_ad_free.R;
 
 
 import android.app.Activity;
@@ -41,6 +21,7 @@ public class PauseGame extends Activity implements OnClickListener{
 	Button btnResume = null;
 	Button btnUndo = null;
 	Button btnChangeColor = null;
+	Button btnChangeBoard = null;
 	Button btnRestart = null;
 	Intent databackIntent = null;
 	LinearLayout adLayout = null;
@@ -61,6 +42,7 @@ public class PauseGame extends Activity implements OnClickListener{
 		btnResume = (Button)findViewById(R.id.btnResume);
 		btnUndo = (Button)findViewById(R.id.btnUndo);
 		btnChangeColor = (Button)findViewById(R.id.btnSelectMarble);
+		btnChangeBoard = (Button)findViewById(R.id.btnSelectBoard);
 		btnRestart = (Button)findViewById(R.id.btnRestart);
 		btnExit = (Button)findViewById(R.id.btnExit);
 
@@ -68,6 +50,7 @@ public class PauseGame extends Activity implements OnClickListener{
 		btnResume.setOnClickListener(this);
 		btnUndo.setOnClickListener(this);
 		btnChangeColor.setOnClickListener(this);
+		btnChangeBoard.setOnClickListener(this);
 		btnRestart.setOnClickListener(this);
 
 
@@ -105,6 +88,10 @@ public class PauseGame extends Activity implements OnClickListener{
 			databackIntent.putExtra("action", MASPebbleActivity.ACTION_RESTART);
 		}else if(view == btnUndo){
 			databackIntent.putExtra("action", MASPebbleActivity.ACTION_UNDO);
+		}else if(view == btnChangeBoard){
+			Intent intent = new Intent(this, SelectBoard.class);
+			startActivity(intent);
+			return;
 		}else if(view == btnChangeColor){
 			Intent intent = new Intent(this, SelectMarble.class);
 			startActivityForResult(intent, 9);

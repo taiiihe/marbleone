@@ -1,20 +1,3 @@
-/*  Marble One is Peg solitaire for android
-
-    Copyright (C) 2014  Vishnu V vishnu@easwareapps.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package com.easwareapps.marbleone_ad_free;
 
 import java.io.File;
@@ -25,8 +8,11 @@ import java.io.OutputStream;
 
 
 
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
@@ -37,7 +23,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
+import android.util.DisplayMetrics;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -60,16 +47,157 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 	private static final int LEFT = 1;
 	private static final int DOWN = 2;
 	private static final int UP = 3;
-
+	
+	int DEFAULT = 0;
+	int board = 0;
 	int lastSelected[] = {-1, -1};
-	int pebble[] = {-1, -1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, 1, 1,
-			1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1,
-			1, -1, -1, -1, -1, 1, 1, 1, -1, -1};
-	Integer moveDetails[][] = new Integer[32][3];
+	
+	
+	private int[] getGame0(){
+
+		int board[] = { 
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+				-2, -1, -1,  0,  0,  0, -1, -1, -2,
+				-2, -1, -1,  0,  1,  0, -1, -1, -2,
+				-2,  0,  0,  0,  1,  0,  0,  0, -2,
+				-2,  0,  1,  1,  1,  1,  1,  0, -2,
+				-2,  0,  0,  0,  1,  0,  0,  0, -2,
+				-2, -1, -1,  0,  1,  0, -1, -1, -2,
+				-2, -1, -1,  0,  0,  0, -1, -1, -2,
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+		};
+		return board;
+	}
+	
+	private int[] getGame1(){
+
+		int board[] = { 
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+				-2, -1, -1,  1,  1,  1, -1, -1, -2,
+				-2, -1, -1,  1,  1,  0, -1, -1, -2,
+				-2,  0,  0,  1,  1,  0,  0,  0, -2,
+				-2,  0,  0,  1,  0,  0,  0,  0, -2,
+				-2,  0,  0,  0,  0,  0,  0,  0, -2,
+				-2, -1, -1,  0,  0,  0, -1, -1, -2,
+				-2, -1, -1,  0,  0,  0, -1, -1, -2,
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+		};
+		return board;
+	}
+	
+	private int[] getGame2(){
+
+		int board[] = { 
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+				-2, -1, -1,  1,  1,  1, -1, -1, -2,
+				-2, -1, -1,  1,  1,  1, -1, -1, -2,
+				-2,  0,  0,  1,  1,  1,  0,  0, -2,
+				-2,  0,  0,  1,  0,  1,  0,  0, -2,
+				-2,  0,  0,  0,  0,  0,  0,  0, -2,
+				-2, -1, -1,  0,  0,  0, -1, -1, -2,
+				-2, -1, -1,  0,  0,  0, -1, -1, -2,
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+		};
+		return board;
+	}
+	
+	
+	private int[] getGame3(){ 
+		int board[] = {
+				-2, -2, -2,-2,-2,-2, -2, -2, -2,
+				-2, -1, -1, 1, 1, 1, -1, -1, -2, 
+				-2, -1, -1, 1, 1, 1, -1, -1, -2,
+				-2,  1,  1, 1, 1, 1,  1,  1, -2,
+				-2,  1,  1, 1, 0, 1,  1,  1, -2,
+				-2,  1,  1, 1, 1, 1,  1,  1, -2,
+				-2, -1, -1, 1, 1, 1, -1, -1, -2,
+				-2, -1, -1, 1, 1, 1, -1, -1, -2,
+				-2, -2, -2,-2,-2,-2, -2, -2, -2
+				
+		};
+		effectiveRows = 8;
+		return board;
+	}
+	private int[] getGame4(){ 
+		int board[] = {
+				-2, -2, -2,-2,-2,-2, -2, -2, -2,
+				-2, -1, -1, 1, 1, 1, -1, -1, -2, 
+				-2, -1,  1, 1, 1, 1,  1, -1, -2,
+				-2,  0,  1, 1, 1, 1,  1,  1, -2,
+				-2,  1,  1, 1, 1, 1,  1,  1, -2,
+				-2,  1,  1, 1, 1, 1,  1,  1, -2,
+				-2, -1,  1, 1, 1, 1,  1, -1, -2,
+				-2, -1, -1, 1, 1, 1, -1, -1, -2,
+				-2, -2, -2,-2,-2,-2, -2, -2, -2
+		};
+		effectiveRows = 8;
+		return board;
+	}
+	
+	private int[] getGame5(){
+
+		int board[] = { 
+				-2, -2, -2, -2, -2, -2, -2, -2, -2,
+				-1, -1, -1,  1,  1,  1, -1, -1, -2,
+				-1, -1, -1,  1,  1,  1, -1, -1, -2,
+				 1,  1,  1,  1,  1,  1,  1,  1, -2,
+				 1,  1,  1,  1,  0,  1,  1,  1, -2,
+				 1,  1,  1,  1,  1,  1,  1,  1, -2,
+				-1, -1, -1,  1,  1,  1, -1, -1, -2,
+				-1, -1, -1,  1,  1,  1, -1, -1, -2,
+				-1, -1, -1,  1,  1,  1, -1, -1, -2,
+				
+		};
+		effectiveRows = 10;
+		return board;
+	}
+	
+	private int[] getGame6(){
+
+		int board[] = { 
+				-1, -1, -1,  1,  1,  1, -1, -1, -1, 
+				-1, -1, -1,  1,  1,  1, -1, -1, -1, 
+				-1, -1, -1,  1,  1,  1, -1, -1, -1, 
+				 1,  1,  1,  1,  1,  1,  1,  1,  1, 
+				 1,  1,  1,  1,  0,  1,  1,  1,  1,
+				 1,  1,  1,  1,  1,  1,  1,  1,  1,
+				-1, -1, -1,  1,  1,  1, -1, -1, -1,
+				-1, -1, -1,  1,  1,  1, -1, -1, -1,
+				-1, -1, -1,  1,  1,  1, -1, -1, -1,
+		};
+		effectiveRows = 10;
+		return board;
+	}
+	
+	
+	private int[] getGame7(){
+
+		int board[] = { 
+				-1, -1, -1, -1,  1, -1, -1, -1, -1, 
+				-1, -1, -1,  1,  1,  1, -1, -1, -1, 
+				-1, -1,  1,  1,  1,  1,  1, -1, -1, 
+				-1,  1,  1,  1,  1,  1,  1,  1, -1, 
+				 1,  1,  1,  1,  1,  1,  1,  1,  1,
+				-1,  1,  1,  1,  0,  1,  1,  1, -1,
+				-1, -1,  1,  1,  1,  1,  1, -1, -1,
+				-1, -1, -1,  1,  1,  1, -1, -1, -1,
+				-1, -1, -1, -1,  1, -1, -1, -1, -1,
+		};
+		effectiveRows = 10;
+		return board;
+	}
+	
+	
+
+
+	int pebble[];
+	
+	
+	Integer moveDetails[][] = new Integer[100][3];
 	int moveIndex = -1;
 
 	int moves = 0;
-	int noPebbles = 32;
+	int noPebbles = 0;
 	boolean gameEnd = false;
 	boolean gameStarted = false;
 	boolean gamePaused = false;
@@ -81,11 +209,14 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 	int min = 0;
 	int hr = 0;
 	Handler handler;
+	int cols = 9;
+	int rows = 9;
+	int effectiveRows = rows;
 
-	ImageView imgSlot[][] = new ImageView[7][7];
+	ImageView imgPebble[][] = new ImageView[rows][cols];
+	ImageView imgSlot[][] = new ImageView[rows][cols];
 	TextView txtTime = null;
 
-	LinearLayout adLayout;
 	RelativeLayout mainLayout = null; 
 	RelativeLayout slotLayout = null;
 
@@ -112,10 +243,10 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	int pebbleResource;
 	int selectedPebbleResource;
-	
+
 	int BLUE = 0;
 	int RED = 3;
-	
+
 	int marbleColor = BLUE;
 	int selectedMarbleColor = RED;
 
@@ -134,15 +265,31 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
+
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		masPref = this.getSharedPreferences("com.easwareapps.maspebble", MODE_PRIVATE);
+		int newboard = masPref.getInt("board", DEFAULT);
+		board = newboard;
+		switch(newboard){
+		case 0: pebble = getGame0();break;
+		case 1: pebble = getGame1();break;
+		case 2: pebble = getGame2();break;
+		case 3: pebble = getGame3();break;
+		case 4: pebble = getGame4();break;
+		case 5: pebble = getGame5();break;
+		case 6: pebble = getGame6();break;
+		case 7: pebble = getGame7();break;
+		default: pebble = getGame0();break;
+		}
+		noPebbles = getPebblesInBoard();
+		
 
 		initSlots();
 		setClickListeners();
 
-		RelativeLayout.LayoutParams rl = (RelativeLayout.LayoutParams)imgSlot[0][2].getLayoutParams();
+		RelativeLayout.LayoutParams rl = (RelativeLayout.LayoutParams)imgPebble[0][2].getLayoutParams();
 
-		int size = imgSlot[0][2].getLayoutParams().width;
+		int size = imgPebble[0][2].getLayoutParams().width;
 		int space = rl.leftMargin;
 		int distance = (size + space)*2;
 
@@ -172,7 +319,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		throwAway.setDuration(duration);
 		throwAway.setFillAfter(true);
 
-		
+
 		AssetFileDescriptor afd;
 		try {
 			afd = getAssets().openFd("bg-1.ogg");
@@ -192,16 +339,29 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	}
 
+	private int getMinimumResolution() {
+		// TODO Auto-generated method stub
+		LinearLayout header = (LinearLayout)findViewById(R.id.idHeaderLayout);
+		int hh = header.getLayoutParams().height;
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+		final int height = dm.heightPixels - hh;
+		final int width = dm.widthPixels;
+		if(height < width){
+			return height;
+		}
+		return width;
+	}
 	public void restartGame(){
 
 		moveIndex = 0;
 		sec = 0;
-		//		try {
-		//			updateTimeTask.interrupt();
-		//		} catch (Exception e) {
-		//			// TODO: handle exception
-		//		}
-		handler.removeCallbacks(updateTimeTask);
+		try{
+			handler.removeCallbacks(updateTimeTask);
+		}catch(Exception e){
+			
+		}
 		gameStarted = false;
 
 		//handler.
@@ -209,114 +369,30 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 		lastSelected[0] = -1;
 		lastSelected[1] = -1;
-
-
-
-		noPebbles = 32;
+		
+		
+		SharedPreferences masPref = this.getSharedPreferences("com.easwareapps.maspebble", MODE_PRIVATE);
+		int newboard = masPref.getInt("board", DEFAULT);
+		System.out.println(newboard+"=index\n");
+		switch(newboard){
+		case 0: pebble = getGame0();break;
+		case 1: pebble = getGame1();break;
+		case 2: pebble = getGame2();break;
+		case 3: pebble = getGame3();break;
+		case 4: pebble = getGame4();break;
+		case 5: pebble = getGame5();break;
+		case 6: pebble = getGame6();break;
+		case 7: pebble = getGame7();break;
+		default: pebble = getGame0();break;
+		}
+		noPebbles = getPebblesInBoard();
+		
+		
 
 		gameEnd = false;
 		gameStarted = false;
 		gamePaused = false;
 
-		int index = 0;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 0;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = 1;
-		index++;
-		pebble[index] = -1;
-		index++;
-		pebble[index] = -1;
-		index++;
 
 		isMoving = false;
 		imageSaved = false;
@@ -336,6 +412,17 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	}
 
+	private int getPebblesInBoard() {
+		// TODO Auto-generated method stub
+		int no = 0;
+		for(int i = 0; i < pebble.length; i++){
+			if(pebble[i] == 1){
+				no += 1;
+			}
+		}
+		return no;
+	}
+
 	private void saveImage() {
 		// TODO Auto-generated method stub
 		try{
@@ -344,9 +431,9 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		RelativeLayout.LayoutParams rl = (RelativeLayout.LayoutParams)imgSlot[0][2].getLayoutParams();
+		RelativeLayout.LayoutParams rl = (RelativeLayout.LayoutParams)imgPebble[0][2].getLayoutParams();
 
-		int pebble = imgSlot[0][2].getLayoutParams().width;
+		int pebble = imgPebble[0][2].getLayoutParams().width;
 		int space = rl.leftMargin;
 		int size = (pebble + space)*8;
 
@@ -388,7 +475,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 			}
 
 		}
-		
+
 		Intent intent = new Intent(getApplicationContext(), GameOver.class);
 		int score = calculateScore(moveIndex + 1);
 		intent.putExtra("score", score);
@@ -417,8 +504,8 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	private int calculateScore(int moves) {
 		int score  = 0;
-		int points[] = {0,10,20,50,100,500,1000,5000};
-		int top[] = {0,5,10,15,20,25,30,31};
+		int points[] = {0,10,20,50,100,500,1000,5000,7500,10000};
+		int top[] = {0,5,10,15,20,25,30,35,40,45};
 		int index = 1;
 		while(index < top.length){
 			if(moves > top[index]){
@@ -434,16 +521,15 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	private void invalidateAll(){
 
-		for(int i=0;i<7;i++){
-			for(int j=0;j<7;j++){
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<cols;j++){
 				if(pebble[getIndex(i, j)] ==- 1){
 					continue;
 				}
 				try{
-					imgSlot[i][j].invalidate();
+					imgPebble[i][j].invalidate();
 				}catch (Exception e) {
 					// TODO: handle exception
-					Log.e("INVALIDATE", ""+i+"|"+j);
 					e.printStackTrace();
 				}
 			}
@@ -480,13 +566,115 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		}
 
 		mainLayout = (RelativeLayout)findViewById(R.id.idGameBoard);
-		slotLayout = (RelativeLayout)findViewById(R.id.idSlotBoard);
+		slotLayout = (RelativeLayout)findViewById(R.id.idPebbleBoard);
+		//		for(int i=0;i<7;i++){
+		//			for(int j=0;j<7;j++){
+		//				String s = "idPebble"+i+j;
+		//				imgPebble[0][2] = (ImageView)findViewById(R.id.idPebble+i+j);
+		//			}
+		//		}
+
+
+		imgPebble[0][0] = (ImageView)findViewById(R.id.idPebble00);
+		imgPebble[0][1] = (ImageView)findViewById(R.id.idPebble01);
+		imgPebble[0][2] = (ImageView)findViewById(R.id.idPebble02);
+		imgPebble[0][3] = (ImageView)findViewById(R.id.idPebble03);
+		imgPebble[0][4] = (ImageView)findViewById(R.id.idPebble04);
+		imgPebble[0][5] = (ImageView)findViewById(R.id.idPebble05);
+		imgPebble[0][6] = (ImageView)findViewById(R.id.idPebble06);
+		imgPebble[0][7] = (ImageView)findViewById(R.id.idPebble07);
+		imgPebble[0][8] = (ImageView)findViewById(R.id.idPebble08);
+		imgPebble[1][0] = (ImageView)findViewById(R.id.idPebble10);
+		imgPebble[1][1] = (ImageView)findViewById(R.id.idPebble11);
+		imgPebble[1][2] = (ImageView)findViewById(R.id.idPebble12);
+		imgPebble[1][3] = (ImageView)findViewById(R.id.idPebble13);
+		imgPebble[1][4] = (ImageView)findViewById(R.id.idPebble14);
+		imgPebble[1][5] = (ImageView)findViewById(R.id.idPebble15);
+		imgPebble[1][6] = (ImageView)findViewById(R.id.idPebble16);
+		imgPebble[1][7] = (ImageView)findViewById(R.id.idPebble17);
+		imgPebble[1][8] = (ImageView)findViewById(R.id.idPebble18);
+		imgPebble[2][0] = (ImageView)findViewById(R.id.idPebble20);
+		imgPebble[2][1] = (ImageView)findViewById(R.id.idPebble21);
+		imgPebble[2][2] = (ImageView)findViewById(R.id.idPebble22);
+		imgPebble[2][3] = (ImageView)findViewById(R.id.idPebble23);
+		imgPebble[2][4] = (ImageView)findViewById(R.id.idPebble24);
+		imgPebble[2][5] = (ImageView)findViewById(R.id.idPebble25);
+		imgPebble[2][6] = (ImageView)findViewById(R.id.idPebble26);
+		imgPebble[2][7] = (ImageView)findViewById(R.id.idPebble27);
+		imgPebble[2][8] = (ImageView)findViewById(R.id.idPebble28);
+		imgPebble[3][0] = (ImageView)findViewById(R.id.idPebble30);
+		imgPebble[3][1] = (ImageView)findViewById(R.id.idPebble31);
+		imgPebble[3][2] = (ImageView)findViewById(R.id.idPebble32);
+		imgPebble[3][3] = (ImageView)findViewById(R.id.idPebble33);
+		imgPebble[3][4] = (ImageView)findViewById(R.id.idPebble34);
+		imgPebble[3][5] = (ImageView)findViewById(R.id.idPebble35);
+		imgPebble[3][6] = (ImageView)findViewById(R.id.idPebble36);
+		imgPebble[3][7] = (ImageView)findViewById(R.id.idPebble37);
+		imgPebble[3][8] = (ImageView)findViewById(R.id.idPebble38);
+		imgPebble[4][0] = (ImageView)findViewById(R.id.idPebble40);
+		imgPebble[4][1] = (ImageView)findViewById(R.id.idPebble41);
+		imgPebble[4][2] = (ImageView)findViewById(R.id.idPebble42);
+		imgPebble[4][3] = (ImageView)findViewById(R.id.idPebble43);
+		imgPebble[4][4] = (ImageView)findViewById(R.id.idPebble44);
+		imgPebble[4][5] = (ImageView)findViewById(R.id.idPebble45);
+		imgPebble[4][6] = (ImageView)findViewById(R.id.idPebble46);
+		imgPebble[4][7] = (ImageView)findViewById(R.id.idPebble47);
+		imgPebble[4][8] = (ImageView)findViewById(R.id.idPebble48);
+		imgPebble[5][0] = (ImageView)findViewById(R.id.idPebble50);
+		imgPebble[5][1] = (ImageView)findViewById(R.id.idPebble51);
+		imgPebble[5][2] = (ImageView)findViewById(R.id.idPebble52);
+		imgPebble[5][3] = (ImageView)findViewById(R.id.idPebble53);
+		imgPebble[5][4] = (ImageView)findViewById(R.id.idPebble54);
+		imgPebble[5][5] = (ImageView)findViewById(R.id.idPebble55);
+		imgPebble[5][6] = (ImageView)findViewById(R.id.idPebble56);
+		imgPebble[5][7] = (ImageView)findViewById(R.id.idPebble57);
+		imgPebble[5][8] = (ImageView)findViewById(R.id.idPebble58);
+		imgPebble[6][0] = (ImageView)findViewById(R.id.idPebble60);
+		imgPebble[6][1] = (ImageView)findViewById(R.id.idPebble61);
+		imgPebble[6][2] = (ImageView)findViewById(R.id.idPebble62);
+		imgPebble[6][3] = (ImageView)findViewById(R.id.idPebble63);
+		imgPebble[6][4] = (ImageView)findViewById(R.id.idPebble64);
+		imgPebble[6][5] = (ImageView)findViewById(R.id.idPebble65);
+		imgPebble[6][6] = (ImageView)findViewById(R.id.idPebble66);
+		imgPebble[6][7] = (ImageView)findViewById(R.id.idPebble67);
+		imgPebble[6][8] = (ImageView)findViewById(R.id.idPebble68);
+		imgPebble[7][0] = (ImageView)findViewById(R.id.idPebble70);
+		imgPebble[7][1] = (ImageView)findViewById(R.id.idPebble71);
+		imgPebble[7][2] = (ImageView)findViewById(R.id.idPebble72);
+		imgPebble[7][3] = (ImageView)findViewById(R.id.idPebble73);
+		imgPebble[7][4] = (ImageView)findViewById(R.id.idPebble74);
+		imgPebble[7][5] = (ImageView)findViewById(R.id.idPebble75);
+		imgPebble[7][6] = (ImageView)findViewById(R.id.idPebble76);
+		imgPebble[7][7] = (ImageView)findViewById(R.id.idPebble77);
+		imgPebble[7][8] = (ImageView)findViewById(R.id.idPebble78);
+		imgPebble[8][0] = (ImageView)findViewById(R.id.idPebble80);
+		imgPebble[8][1] = (ImageView)findViewById(R.id.idPebble81);
+		imgPebble[8][2] = (ImageView)findViewById(R.id.idPebble82);
+		imgPebble[8][3] = (ImageView)findViewById(R.id.idPebble83);
+		imgPebble[8][4] = (ImageView)findViewById(R.id.idPebble84);
+		imgPebble[8][5] = (ImageView)findViewById(R.id.idPebble85);
+		imgPebble[8][6] = (ImageView)findViewById(R.id.idPebble86);
+		imgPebble[8][7] = (ImageView)findViewById(R.id.idPebble87);
+		imgPebble[8][8] = (ImageView)findViewById(R.id.idPebble88);
+		
+		imgSlot[0][0] = (ImageView)findViewById(R.id.idSlot00);
+		imgSlot[0][1] = (ImageView)findViewById(R.id.idSlot01);
 		imgSlot[0][2] = (ImageView)findViewById(R.id.idSlot02);
 		imgSlot[0][3] = (ImageView)findViewById(R.id.idSlot03);
 		imgSlot[0][4] = (ImageView)findViewById(R.id.idSlot04);
+		imgSlot[0][5] = (ImageView)findViewById(R.id.idSlot05);
+		imgSlot[0][6] = (ImageView)findViewById(R.id.idSlot06);
+		imgSlot[0][7] = (ImageView)findViewById(R.id.idSlot07);
+		imgSlot[0][8] = (ImageView)findViewById(R.id.idSlot08);
+		imgSlot[1][0] = (ImageView)findViewById(R.id.idSlot10);
+		imgSlot[1][1] = (ImageView)findViewById(R.id.idSlot11);
 		imgSlot[1][2] = (ImageView)findViewById(R.id.idSlot12);
 		imgSlot[1][3] = (ImageView)findViewById(R.id.idSlot13);
 		imgSlot[1][4] = (ImageView)findViewById(R.id.idSlot14);
+		imgSlot[1][5] = (ImageView)findViewById(R.id.idSlot15);
+		imgSlot[1][6] = (ImageView)findViewById(R.id.idSlot16);
+		imgSlot[1][7] = (ImageView)findViewById(R.id.idSlot17);
+		imgSlot[1][8] = (ImageView)findViewById(R.id.idSlot18);
 		imgSlot[2][0] = (ImageView)findViewById(R.id.idSlot20);
 		imgSlot[2][1] = (ImageView)findViewById(R.id.idSlot21);
 		imgSlot[2][2] = (ImageView)findViewById(R.id.idSlot22);
@@ -494,6 +682,8 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		imgSlot[2][4] = (ImageView)findViewById(R.id.idSlot24);
 		imgSlot[2][5] = (ImageView)findViewById(R.id.idSlot25);
 		imgSlot[2][6] = (ImageView)findViewById(R.id.idSlot26);
+		imgSlot[2][7] = (ImageView)findViewById(R.id.idSlot27);
+		imgSlot[2][8] = (ImageView)findViewById(R.id.idSlot28);
 		imgSlot[3][0] = (ImageView)findViewById(R.id.idSlot30);
 		imgSlot[3][1] = (ImageView)findViewById(R.id.idSlot31);
 		imgSlot[3][2] = (ImageView)findViewById(R.id.idSlot32);
@@ -501,6 +691,8 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		imgSlot[3][4] = (ImageView)findViewById(R.id.idSlot34);
 		imgSlot[3][5] = (ImageView)findViewById(R.id.idSlot35);
 		imgSlot[3][6] = (ImageView)findViewById(R.id.idSlot36);
+		imgSlot[3][7] = (ImageView)findViewById(R.id.idSlot37);
+		imgSlot[3][8] = (ImageView)findViewById(R.id.idSlot38);
 		imgSlot[4][0] = (ImageView)findViewById(R.id.idSlot40);
 		imgSlot[4][1] = (ImageView)findViewById(R.id.idSlot41);
 		imgSlot[4][2] = (ImageView)findViewById(R.id.idSlot42);
@@ -508,49 +700,83 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		imgSlot[4][4] = (ImageView)findViewById(R.id.idSlot44);
 		imgSlot[4][5] = (ImageView)findViewById(R.id.idSlot45);
 		imgSlot[4][6] = (ImageView)findViewById(R.id.idSlot46);
+		imgSlot[4][7] = (ImageView)findViewById(R.id.idSlot47);
+		imgSlot[4][8] = (ImageView)findViewById(R.id.idSlot48);
+		imgSlot[5][0] = (ImageView)findViewById(R.id.idSlot50);
+		imgSlot[5][1] = (ImageView)findViewById(R.id.idSlot51);
 		imgSlot[5][2] = (ImageView)findViewById(R.id.idSlot52);
 		imgSlot[5][3] = (ImageView)findViewById(R.id.idSlot53);
 		imgSlot[5][4] = (ImageView)findViewById(R.id.idSlot54);
+		imgSlot[5][5] = (ImageView)findViewById(R.id.idSlot55);
+		imgSlot[5][6] = (ImageView)findViewById(R.id.idSlot56);
+		imgSlot[5][7] = (ImageView)findViewById(R.id.idSlot57);
+		imgSlot[5][8] = (ImageView)findViewById(R.id.idSlot58);
+		imgSlot[6][0] = (ImageView)findViewById(R.id.idSlot60);
+		imgSlot[6][1] = (ImageView)findViewById(R.id.idSlot61);
 		imgSlot[6][2] = (ImageView)findViewById(R.id.idSlot62);
 		imgSlot[6][3] = (ImageView)findViewById(R.id.idSlot63);
 		imgSlot[6][4] = (ImageView)findViewById(R.id.idSlot64);
+		imgSlot[6][5] = (ImageView)findViewById(R.id.idSlot65);
+		imgSlot[6][6] = (ImageView)findViewById(R.id.idSlot66);
+		imgSlot[6][7] = (ImageView)findViewById(R.id.idSlot67);
+		imgSlot[6][8] = (ImageView)findViewById(R.id.idSlot68);
+		imgSlot[7][0] = (ImageView)findViewById(R.id.idSlot70);
+		imgSlot[7][1] = (ImageView)findViewById(R.id.idSlot71);
+		imgSlot[7][2] = (ImageView)findViewById(R.id.idSlot72);
+		imgSlot[7][3] = (ImageView)findViewById(R.id.idSlot73);
+		imgSlot[7][4] = (ImageView)findViewById(R.id.idSlot74);
+		imgSlot[7][5] = (ImageView)findViewById(R.id.idSlot75);
+		imgSlot[7][6] = (ImageView)findViewById(R.id.idSlot76);
+		imgSlot[7][7] = (ImageView)findViewById(R.id.idSlot77);
+		imgSlot[7][8] = (ImageView)findViewById(R.id.idSlot78);
+		imgSlot[8][0] = (ImageView)findViewById(R.id.idSlot80);
+		imgSlot[8][1] = (ImageView)findViewById(R.id.idSlot81);
+		imgSlot[8][2] = (ImageView)findViewById(R.id.idSlot82);
+		imgSlot[8][3] = (ImageView)findViewById(R.id.idSlot83);
+		imgSlot[8][4] = (ImageView)findViewById(R.id.idSlot84);
+		imgSlot[8][5] = (ImageView)findViewById(R.id.idSlot85);
+		imgSlot[8][6] = (ImageView)findViewById(R.id.idSlot86);
+		imgSlot[8][7] = (ImageView)findViewById(R.id.idSlot87);
+		imgSlot[8][8] = (ImageView)findViewById(R.id.idSlot88);
+		
+		
+		
 
-		imgSlot[0][2].setSoundEffectsEnabled(false);
-		imgSlot[0][3].setSoundEffectsEnabled(false);
-		imgSlot[0][4].setSoundEffectsEnabled(false);
-		imgSlot[1][2].setSoundEffectsEnabled(false);
-		imgSlot[1][3].setSoundEffectsEnabled(false);
-		imgSlot[1][4].setSoundEffectsEnabled(false);
-		imgSlot[2][0].setSoundEffectsEnabled(false);
-		imgSlot[2][1].setSoundEffectsEnabled(false);
-		imgSlot[2][2].setSoundEffectsEnabled(false);
-		imgSlot[2][3].setSoundEffectsEnabled(false);
-		imgSlot[2][4].setSoundEffectsEnabled(false);
-		imgSlot[2][5].setSoundEffectsEnabled(false);
-		imgSlot[2][6].setSoundEffectsEnabled(false);
-		imgSlot[3][0].setSoundEffectsEnabled(false);
-		imgSlot[3][1].setSoundEffectsEnabled(false);
-		imgSlot[3][2].setSoundEffectsEnabled(false);
-		imgSlot[3][3].setSoundEffectsEnabled(false);
-		imgSlot[3][4].setSoundEffectsEnabled(false);
-		imgSlot[3][5].setSoundEffectsEnabled(false);
-		imgSlot[3][6].setSoundEffectsEnabled(false);
-		imgSlot[4][0].setSoundEffectsEnabled(false);
-		imgSlot[4][1].setSoundEffectsEnabled(false);
-		imgSlot[4][2].setSoundEffectsEnabled(false);
-		imgSlot[4][3].setSoundEffectsEnabled(false);
-		imgSlot[4][4].setSoundEffectsEnabled(false);
-		imgSlot[4][5].setSoundEffectsEnabled(false);
-		imgSlot[4][6].setSoundEffectsEnabled(false);
-		imgSlot[5][2].setSoundEffectsEnabled(false);
-		imgSlot[5][3].setSoundEffectsEnabled(false);
-		imgSlot[5][4].setSoundEffectsEnabled(false);
-		imgSlot[6][2].setSoundEffectsEnabled(false);
-		imgSlot[6][3].setSoundEffectsEnabled(false);
-		imgSlot[6][4].setSoundEffectsEnabled(false);
 
-		for(int i=0;i<7;i++){
-			for(int j=0;j<7;j++){
+		
+		
+		
+		RelativeLayout.LayoutParams rl = (RelativeLayout.LayoutParams)imgPebble[2][2].getLayoutParams();
+
+		int space = rl.leftMargin;
+		boolean modify = false;
+		int newsize = (getMinimumResolution()/effectiveRows)-space;
+		
+		modify = true;
+		
+
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<cols;j++){
+				if(pebble[getIndex(i, j)] != -1){
+					imgPebble[i][j].setSoundEffectsEnabled(false);
+				}
+				if(modify){
+					RelativeLayout.LayoutParams rel = (RelativeLayout.LayoutParams)imgPebble[i][j].getLayoutParams();
+					rel.height = newsize;
+					rel.width = newsize;
+					imgPebble[i][j].setLayoutParams(rel);
+					
+					RelativeLayout.LayoutParams rel1 = (RelativeLayout.LayoutParams)imgSlot[i][j].getLayoutParams();
+					rel1.height = newsize;
+					rel1.width = newsize;
+					imgSlot[i][j].setLayoutParams(rel1);
+				}
+			}
+		}
+
+
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<cols;j++){
 				select(i, j, false);
 			}
 		}
@@ -559,7 +785,6 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		btnPause = (ImageView)findViewById(R.id.idBtnPause);
 		btnMute = (ImageView)findViewById(R.id.idBtnMute);
 		btnMusicMute = (ImageView)findViewById(R.id.idBtnMusicMute);
-		adLayout = (LinearLayout)findViewById(R.id.idAdLayout);
 
 		if(masPref.getBoolean("sound", true)){
 			btnMute.setImageResource(R.drawable.ic_sound);
@@ -580,39 +805,14 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 	}
 
 	private void setClickListeners(){
-		imgSlot[0][2].setOnClickListener(this);
-		imgSlot[0][3].setOnClickListener(this);
-		imgSlot[0][4].setOnClickListener(this);
-		imgSlot[1][2].setOnClickListener(this);
-		imgSlot[1][3].setOnClickListener(this);
-		imgSlot[1][4].setOnClickListener(this);
-		imgSlot[2][0].setOnClickListener(this);
-		imgSlot[2][1].setOnClickListener(this);
-		imgSlot[2][2].setOnClickListener(this);
-		imgSlot[2][3].setOnClickListener(this);
-		imgSlot[2][4].setOnClickListener(this);
-		imgSlot[2][5].setOnClickListener(this);
-		imgSlot[2][6].setOnClickListener(this);
-		imgSlot[3][0].setOnClickListener(this);
-		imgSlot[3][1].setOnClickListener(this);
-		imgSlot[3][2].setOnClickListener(this);
-		imgSlot[3][3].setOnClickListener(this);
-		imgSlot[3][4].setOnClickListener(this);
-		imgSlot[3][5].setOnClickListener(this);
-		imgSlot[3][6].setOnClickListener(this);
-		imgSlot[4][0].setOnClickListener(this);
-		imgSlot[4][1].setOnClickListener(this);
-		imgSlot[4][2].setOnClickListener(this);
-		imgSlot[4][3].setOnClickListener(this);
-		imgSlot[4][4].setOnClickListener(this);
-		imgSlot[4][5].setOnClickListener(this);
-		imgSlot[4][6].setOnClickListener(this);
-		imgSlot[5][2].setOnClickListener(this);
-		imgSlot[5][3].setOnClickListener(this);
-		imgSlot[5][4].setOnClickListener(this);
-		imgSlot[6][2].setOnClickListener(this);
-		imgSlot[6][3].setOnClickListener(this);
-		imgSlot[6][4].setOnClickListener(this);
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<cols;j++){
+				if(pebble[getIndex(i, j)] != -1){
+					imgPebble[i][j].setOnClickListener(this);
+				}
+			}
+		}
+
 
 		btnPause.setOnClickListener(this);
 
@@ -651,7 +851,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		if(data == null){
 			return;
 		}
-		Log.d("Activity", "Finished");
+		
 		int action = data.getIntExtra("action", 0);
 		switch (action) {
 		case ACTION_EXIT:
@@ -662,7 +862,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 				restartGame();
 			}catch (Exception e) {
 				// TODO: handle exception
-				Log.d("Exe", e.toString());
+				
 			}
 			break;
 		case ACTION_UNDO:
@@ -671,6 +871,12 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 			break;
 		case ACTION_RESUME:
 			gamePaused = false;
+			SharedPreferences masPref = this.getSharedPreferences("com.easwareapps.maspebble", MODE_PRIVATE);
+			int newboard = masPref.getInt("board", DEFAULT);
+			if(board != newboard){
+				board = newboard;
+				askForRestart();
+			}
 			break;
 		default:
 			break;
@@ -679,13 +885,34 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	}
 
+	private void askForRestart() {
+		// TODO Auto-generated method stub
+		AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(
+				this,R.style.AppTheme));
+		alert.setTitle("Confirmation");
+		alert.setMessage("Game Board Changed, Do yo want to restart the game ?");					
+		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				// Canceled.
+				return;
+			}
+		}).setPositiveButton("Restart", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				// OK.
+				restartGame();
+			}
+		});						
+		alert.show();
+		
+	}
+
 	private void changeColorIfneeded() {
 		// TODO Auto-generated method stub
 		if(masPref.getInt("pebble", BLUE) == marbleColor
-			&& masPref.getInt("selected_pebble", RED) == selectedMarbleColor){
+				&& masPref.getInt("selected_pebble", RED) == selectedMarbleColor){
 			return;
 		}
-		
+
 		marbleColor = masPref.getInt("pebble", BLUE);
 		switch(marbleColor){
 		case 0: pebbleResource = R.drawable.ic_pebble_blue;break;
@@ -696,7 +923,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		default: pebbleResource = R.drawable.ic_pebble_blue;break;
 
 		}
-		
+
 		selectedMarbleColor = masPref.getInt("selected_pebble", RED);
 		if(marbleColor == selectedMarbleColor){
 			selectedMarbleColor = (selectedMarbleColor+2)%5;
@@ -710,14 +937,14 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		default: selectedPebbleResource = R.drawable.ic_pebble_red;break;
 
 		}
-		
-		for(int i=0;i<7;i++){
-			for(int j=0;j<7;j++){
+
+		for(int i=0;i<rows;i++){
+			for(int j=0;j<cols;j++){
 				select(i, j, false);
 			}
 		}
 
-		
+
 	}
 
 	private void undoMove(){
@@ -725,43 +952,44 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 			return;
 		}
 		moves--;
+		noPebbles++;
 
 
-		int i = (int)moveDetails[moveIndex][1]/7;
-		int j = (int)moveDetails[moveIndex][1]%7;
-		imgSlot[i][j].setImageResource(R.drawable.ic_no_pebble);
+		int i = (int)moveDetails[moveIndex][1]/rows;
+		int j = (int)moveDetails[moveIndex][1]%cols;
+		imgPebble[i][j].setImageResource(R.drawable.ic_no_pebble);
 		pebble[getIndex(i, j)] = 0;
 		int k = i;
 		int l = i;
 
-		i = (int)moveDetails[moveIndex][2]/7;
-		j = (int)moveDetails[moveIndex][2]%7;
-		imgSlot[i][j].setImageResource(pebbleResource);
-		imgSlot[i][j].setVisibility(View.VISIBLE);
+		i = (int)moveDetails[moveIndex][2]/rows;
+		j = (int)moveDetails[moveIndex][2]%cols;
+		imgPebble[i][j].setImageResource(pebbleResource);
+		imgPebble[i][j].setVisibility(View.VISIBLE);
 		pebble[getIndex(i, j)] = 1;
 
 
-		i = (int)moveDetails[moveIndex][0]/7;
-		j = (int)moveDetails[moveIndex][0]%7;
+		i = (int)moveDetails[moveIndex][0]/rows;
+		j = (int)moveDetails[moveIndex][0]%cols;
 		animatde[0] = i;
 		animatde[1] = j;
 
 
-		imgSlot[i][j].setImageResource(pebbleResource);
-		imgSlot[i][j].bringToFront();
-		Log.d("UNDO", getMove(k, l, i, j)+"");
+		imgPebble[i][j].setImageResource(pebbleResource);
+		imgPebble[i][j].bringToFront();
+		
 		switch (getMove(k, l, i, j)) {
 		case UP:
-			imgSlot[i][j].startAnimation(moveUp);
+			imgPebble[i][j].startAnimation(moveUp);
 			break;
 		case DOWN:
-			imgSlot[i][j].startAnimation(moveDown);
+			imgPebble[i][j].startAnimation(moveDown);
 			break;
 		case LEFT:
-			imgSlot[i][j].startAnimation(moveLeft);
+			imgPebble[i][j].startAnimation(moveLeft);
 			break;
 		case RIGHT:
-			imgSlot[i][j].startAnimation(moveRight);
+			imgPebble[i][j].startAnimation(moveRight);
 			break;
 
 		default:
@@ -781,22 +1009,22 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 				}
 				try{
-					imgSlot[animatde[0]][animatde[1]].clearAnimation();
-					imgSlot[animatde[0]][animatde[1]].invalidate();
+					imgPebble[animatde[0]][animatde[1]].clearAnimation();
+					imgPebble[animatde[0]][animatde[1]].invalidate();
 
 				}catch(Exception e){
 
 				}
 				try{
 					runOnUiThread(new Runnable() {
-						
+
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
 							invalidateAll();
 						}
 					});
-					
+
 					mainLayout.invalidate();
 				}catch(Exception e){
 
@@ -812,6 +1040,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
+		
 		if(view == btnPause){
 			gamePaused = true;
 			if(gamePaused){
@@ -830,10 +1059,10 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 			handler.postDelayed(updateTimeTask, 0);
 
 		}
-		for(int i=0; i<7; i++){
-			for(int j=0; j<7; j++){
-				if(view == imgSlot[i][j]){
-
+		for(int i=0; i<rows; i++){
+			for(int j=0; j<cols; j++){
+				if(view == imgPebble[i][j]){
+					
 					if(lastSelected[0] == -1 && lastSelected[1] == -1){
 						if(pebble[getIndex(i, j)] == 0 ){
 							playMoveSound(MOVE_INVALID);
@@ -858,25 +1087,25 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 							isMoving = true;
 							proceedMove(move);
 							moveIndex++;
-							moveDetails[moveIndex][0] = Integer.valueOf(lastSelected[0]*7+lastSelected[1]);
-							moveDetails[moveIndex][1] = Integer.valueOf(i*7+j);
+							moveDetails[moveIndex][0] = Integer.valueOf(lastSelected[0]*rows+lastSelected[1]);
+							moveDetails[moveIndex][1] = Integer.valueOf(i*cols+j);
 							moves++;
-							Log.d("pebble_resource", pebbleResource+"");
-							imgSlot[i][j].setImageResource(pebbleResource);
-							imgSlot[i][j].setImageLevel(1);
-							imgSlot[i][j].bringToFront();
+							
+							imgPebble[i][j].setImageResource(pebbleResource);
+							imgPebble[i][j].setImageLevel(1);
+							imgPebble[i][j].bringToFront();
 							switch (move) {
-							case UP: imgSlot[i][j].startAnimation(moveUp);
-							moveDetails[moveIndex][2] = Integer.valueOf(lastSelected[0]*7 + lastSelected[1]-1);
+							case UP: imgPebble[i][j].startAnimation(moveUp);
+							moveDetails[moveIndex][2] = Integer.valueOf(lastSelected[0]*rows + lastSelected[1]-1);
 							break;
-							case DOWN: imgSlot[i][j].startAnimation(moveDown);
-							moveDetails[moveIndex][2] = Integer.valueOf(lastSelected[0]*7 + lastSelected[1]+1);
+							case DOWN: imgPebble[i][j].startAnimation(moveDown);
+							moveDetails[moveIndex][2] = Integer.valueOf(lastSelected[0]*rows + lastSelected[1]+1);
 							break;
-							case LEFT: imgSlot[i][j].startAnimation(moveLeft);
-							moveDetails[moveIndex][2] = Integer.valueOf(((lastSelected[0]-1)*7) + lastSelected[1]);
+							case LEFT: imgPebble[i][j].startAnimation(moveLeft);
+							moveDetails[moveIndex][2] = Integer.valueOf(((lastSelected[0]-1)*rows) + lastSelected[1]);
 							break;
-							case RIGHT: imgSlot[i][j].startAnimation(moveRight);
-							moveDetails[moveIndex][2] = Integer.valueOf(((lastSelected[0]+1)*7) + lastSelected[1]);
+							case RIGHT: imgPebble[i][j].startAnimation(moveRight);
+							moveDetails[moveIndex][2] = Integer.valueOf(((lastSelected[0]+1)*rows) + lastSelected[1]);
 							break;
 							default:break;
 							}
@@ -895,15 +1124,15 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 									}
 									try{
-										imgSlot[animatde[0]][animatde[1]].clearAnimation();
-										imgSlot[animatde[0]][animatde[1]].invalidate();
+										imgPebble[animatde[0]][animatde[1]].clearAnimation();
+										imgPebble[animatde[0]][animatde[1]].invalidate();
 
 									}catch(Exception e){
 
 									}try{
 										try{
 											runOnUiThread(new Runnable() {
-												
+
 												@Override
 												public void run() {
 													// TODO Auto-generated method stub
@@ -912,7 +1141,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 													slotLayout.invalidate();
 												}
 											});
-											
+
 										}catch(Exception e){
 
 										}
@@ -929,6 +1158,12 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 							select(i, j, false);
 							noPebbles--;
 							if(noPebbles == 1){
+								int currentBoard = masPref.getInt("board", 0);
+								if(prefEditor == null){
+									prefEditor = masPref.edit();
+								}
+								prefEditor.putBoolean("game"+currentBoard+"_finished", true);
+								prefEditor.commit();
 								gameEnd = true;
 							}else if(checkDeadLock()){
 								Toast.makeText(getApplicationContext(),
@@ -936,7 +1171,6 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 										Toast.LENGTH_SHORT).show();
 								gameEnd = true;
 							}
-
 							return;
 						}
 						if(pebble[getIndex(i, j)] == 1){
@@ -969,11 +1203,23 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	private void select(int i, int j, boolean type) {
 		// TODO Auto-generated method stub
-
-		if(pebble[getIndex(i, j)] == 1){
-			if(type)	imgSlot[i][j].setImageResource(selectedPebbleResource);
-			else		imgSlot[i][j].setImageResource(pebbleResource);
+		if(pebble[getIndex(i, j)] == -2){
+			imgPebble[i][j].setVisibility(View.GONE);
+			imgSlot[i][j].setVisibility(View.GONE);
+		}else{
+			if(pebble[getIndex(i, j)] == 1){
+				if(type)	imgPebble[i][j].setImageResource(selectedPebbleResource);
+				else		imgPebble[i][j].setImageResource(pebbleResource);
+			}else if(pebble[getIndex(i, j)] == 0){
+				imgPebble[i][j].setImageResource(R.drawable.ic_no_pebble);
+			}else if(pebble[getIndex(i, j)] == -1){
+				imgPebble[i][j].setImageResource(R.drawable.ic_empty_pebble);
+				imgSlot[i][j].setImageResource(R.drawable.ic_empty_pebble);
+			}
+			imgPebble[i][j].setVisibility(View.VISIBLE);
+			imgSlot[i][j].setVisibility(View.VISIBLE);
 		}
+		
 
 	}
 
@@ -983,25 +1229,25 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		case RIGHT:
 
 			throwAwayPebble(lastSelected[0]+1, lastSelected[1]);
-			imgSlot[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
+			imgPebble[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
 			pebble[getIndex(lastSelected[0]+1, lastSelected[1])] = 0;
 			pebble[getIndex(lastSelected[0], lastSelected[1])] = 0;
 			break;
 		case LEFT:
 			throwAwayPebble(lastSelected[0]-1, lastSelected[1]);
-			imgSlot[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
+			imgPebble[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
 			pebble[getIndex(lastSelected[0]-1, lastSelected[1])] = 0;
 			pebble[getIndex(lastSelected[0], lastSelected[1])] = 0;
 			break;
 		case DOWN:
 			throwAwayPebble(lastSelected[0], lastSelected[1]+1);
-			imgSlot[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
+			imgPebble[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
 			pebble[getIndex(lastSelected[0], lastSelected[1]+1)] = 0;
 			pebble[getIndex(lastSelected[0], lastSelected[1])] = 0;
 			break;
 		case UP:
 			throwAwayPebble(lastSelected[0], lastSelected[1]-1);
-			imgSlot[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
+			imgPebble[lastSelected[0]][lastSelected[1]].setImageResource(R.drawable.ic_no_pebble);
 			pebble[getIndex(lastSelected[0], lastSelected[1]-1)] = 0;
 			pebble[getIndex(lastSelected[0], lastSelected[1])] = 0;
 			break;
@@ -1014,7 +1260,7 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 	}
 
 	private void throwAwayPebble(final int i,final int j){
-		imgSlot[i][j].setImageResource(R.drawable.ic_no_pebble);
+		imgPebble[i][j].setImageResource(R.drawable.ic_no_pebble);
 	}
 
 	private int isMoveAllowed(int i, int j, int k, int l) {
@@ -1050,13 +1296,13 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	private int getIndex(int i, int j) {
 		// TODO Auto-generated method stub
-		return i*7+j;
+		return i*rows+j;
 	}
 
 	private boolean checkDeadLock(){
 		for(int i=0; i<pebble.length;i++){
 			if(pebble[i] == 1){
-				if(checkMoveExsistForPebble((int)(i/7),(int)(i%7))){
+				if(checkMoveExsistForPebble((int)(i/rows),(int)(i%cols))){
 					return false;
 				}
 			}
@@ -1067,13 +1313,13 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 
 	private boolean checkMoveExsistForPebble(int i, int j) {
 		// TODO Auto-generated method stub
-		if(i+2 < 7)
+		if(i+2 < rows)
 			if(isMoveAllowed(i+2, j, i, j) >= 0)	return true;
 
 		if(i-2 >= 0)
 			if(isMoveAllowed(i-2, j, i, j) >= 0)	return true;
 
-		if(j+2 < 7)
+		if(j+2 < cols)
 			if(isMoveAllowed(i, j+2, i, j) >= 0)	return true;
 
 		if(j-2 >= 0)
@@ -1137,10 +1383,18 @@ public class MASPebbleActivity extends Activity implements OnClickListener, Runn
 		if(gameEnd  && !isMoving ){
 			saveImage();
 			imageSaved = true;
-			
+			if(gameEnd){
+				try{
+					handler.removeCallbacks(updateTimeTask);
+				}catch(Exception e){
+					
+				}
+				
+			}
+
 
 		}
-		if(gameEnd)	Log.d("Inside update time", strTime);
+		
 	}
 
 	public void toggleSound(View view){

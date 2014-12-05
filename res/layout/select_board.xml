@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/idScrHorizondalMarble"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout            
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="vertical" >
+            
+            
+
+            <ImageView
+                android:id="@+id/idImgBoard0"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board0" />
+
+            <ImageView
+                android:id="@+id/idImgBoard1"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board1" />
+
+            <ImageView
+                android:id="@+id/idImgBoard2"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board2" />
+
+            <ImageView
+                android:id="@+id/idImgBoard3"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board3" />
+
+            <ImageView
+                android:id="@+id/idImgBoard4"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board4" />
+
+            <ImageView
+                android:id="@+id/idImgBoard5"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board5" />
+
+            <ImageView
+                android:id="@+id/idImgBoard6"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board6" />
+
+            <ImageView
+                android:id="@+id/idImgBoard7"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_margin="15dp"
+                android:background="@drawable/ic_board7" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btkOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="finish"
+        android:text="@string/title_ok" />
+
+</LinearLayout>

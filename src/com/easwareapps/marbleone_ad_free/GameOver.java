@@ -1,20 +1,3 @@
-/*  Marble One is Peg solitaire for android
-
-    Copyright (C) 2014  Vishnu V vishnu@easwareapps.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package com.easwareapps.marbleone_ad_free;
 
 import java.io.File;
@@ -22,14 +5,14 @@ import java.io.File;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.easwareapps.marbleone_ad_free.R;
 
 
 
@@ -39,6 +22,7 @@ public class GameOver extends Activity {
 	TextView txtTimeBonus;
 	TextView txtTotalScore;
 	TextView txtGameMessage;
+	int NO_BOARDS = 8;
 
 
 
@@ -59,7 +43,7 @@ public class GameOver extends Activity {
 	int incrementerScore = 0;
 	int incrementerBonus = 0;
 
-
+	
 
 	ProgressDialog progressSpinner = null;
 
@@ -68,7 +52,8 @@ public class GameOver extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
+
 		try{
 			Intent intent = getIntent();
 			SCORE = intent.getIntExtra("score", 0);
@@ -87,13 +72,31 @@ public class GameOver extends Activity {
 			// TODO: handle exception
 		}
 		setContentView(R.layout.game_over_layout);
-
+		SharedPreferences masPref = this.getSharedPreferences("com.easwareapps.maspebble", MODE_PRIVATE);
+		int i=0;
+		for(i=0; i<NO_BOARDS; i++){
+			if(!masPref.getBoolean("game"+i+"_finished", false)){
+				break;
+			}
+		}
+		if(pebble != 1){
+			ImageView btnNext = (ImageView)findViewById(R.id.nextGame); 
+			btnNext.setVisibility(View.GONE);
+		}
+		
 		txtGameMessage = (TextView)findViewById(R.id.idCongrats);
 		txtGameMessage.setText(message);
 
 		handler = new Handler();
 		handler.postDelayed(updateTimeTask, 0);
 	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+	}
+
 	
 
 
@@ -160,10 +163,32 @@ public class GameOver extends Activity {
 	}
 
 	public void restartGame(View view){
+		restartGame();
+	}
+	
+	private void restartGame() {
+		// TODO Auto-generated method stub
 		Intent databackIntent = new Intent();
 		databackIntent.putExtra("action", MASPebbleActivity.ACTION_RESTART);
 		setResult(Activity.RESULT_OK, databackIntent);
 		finish();
+	}
+
+	public void nextGame(View view){
+		SharedPreferences masPref = this.getSharedPreferences("com.easwareapps.maspebble", MODE_PRIVATE);
+		int i=0;
+		for(i=0; i<NO_BOARDS; i++){
+			if(!masPref.getBoolean("game"+i+"_finished", false)){
+				break;
+			}
+		}
+		if(i==NO_BOARDS){
+			i = 0;
+		}
+		SharedPreferences.Editor prefEditor = masPref.edit();
+		prefEditor.putInt("board", i);
+		prefEditor.commit();
+		restartGame();
 	}
 
 

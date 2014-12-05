@@ -14,21 +14,20 @@
         android:orientation="vertical" >
 
         <TextView
-                android:id="@+id/idCongrats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_great"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:layout_marginBottom="20sp"
-                android:textSize="80sp" />
-        
+            android:id="@+id/idCongrats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            android:gravity="center"
+            android:text="@string/title_great"
+            android:textColor="#FFFFFF"
+            android:textSize="80sp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:orientation="horizontal" >
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -94,28 +93,39 @@
             android:layout_margin="5sp"
             android:gravity="center_horizontal" >
 
-
             <ImageButton
-                android:id="@+id/shareViaOthers"
+                android:id="@+id/restartGame"
                 android:layout_width="100sp"
                 android:layout_height="100sp"
+                android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="5sp"
                 android:background="#00000000"
-                android:contentDescription="@string/title_share"
-                android:onClick="shareResult"
-                android:src="@drawable/ic_share" />
+                android:contentDescription="@string/title_restart"
+                android:onClick="restartGame"
+                android:src="@drawable/ic_restart" />
+
+            <ImageButton
+                android:id="@+id/nextGame"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="5sp"
+                android:background="#00000000"
+                android:contentDescription="@string/title_next"
+                android:onClick="nextGame"
+                android:src="@drawable/ic_next" />
         </LinearLayout>
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/restartGame"
+        android:id="@+id/shareViaOthers"
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_margin="5sp"
         android:background="#00000000"
-        android:contentDescription="@string/title_restart"
-        android:onClick="restartGame"
-        android:src="@drawable/ic_restart" />
+        android:contentDescription="@string/title_share"
+        android:onClick="shareResult"
+        android:src="@drawable/ic_share" />
 
 </LinearLayout>

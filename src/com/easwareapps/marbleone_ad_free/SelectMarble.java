@@ -1,23 +1,4 @@
-/*  Marble One is Peg solitaire for android
-
-    Copyright (C) 2014  Vishnu V vishnu@easwareapps.com
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 package com.easwareapps.marbleone_ad_free;
-
-import com.easwareapps.marbleone_ad_free.R;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -67,9 +48,9 @@ public class SelectMarble extends Activity implements OnClickListener {
 		SharedPreferences masPref = this.getSharedPreferences("com.easwareapps.maspebble", MODE_PRIVATE);
 		int index = masPref.getInt("pebble", BLUE);
 		Log.d("INDEX", index+"");
-		imgMarbles[index].setImageResource(R.drawable.ic_select_frame);
+		imgMarbles[index].setImageResource(R.drawable.ic_marble_select_frame);
 		index = masPref.getInt("selected_pebble", RED);
-		imgSelectedMarbles[index].setImageResource(R.drawable.ic_select_frame);
+		imgSelectedMarbles[index].setImageResource(R.drawable.ic_marble_select_frame);
 		
 		
 		
@@ -111,7 +92,7 @@ public class SelectMarble extends Activity implements OnClickListener {
 		int currentIndex = masPref.getInt("pebble", BLUE);
 		imgMarbles[currentIndex].setImageResource(R.drawable.ic_empty_pebble);
 		prefEditor.putInt("pebble", index);
-		imgMarbles[index].setImageResource(R.drawable.ic_select_frame);
+		imgMarbles[index].setImageResource(R.drawable.ic_marble_select_frame);
 		imgMarbles[index].invalidate();
 		prefEditor.commit();
 		
@@ -127,7 +108,7 @@ public class SelectMarble extends Activity implements OnClickListener {
 		imgSelectedMarbles[currentIndex].setImageResource(R.drawable.ic_empty_pebble);
 		
 		prefEditor.putInt("selected_pebble", i);
-		imgSelectedMarbles[i].setImageResource(R.drawable.ic_select_frame);
+		imgSelectedMarbles[i].setImageResource(R.drawable.ic_marble_select_frame);
 		imgSelectedMarbles[i].invalidate();
 		prefEditor.commit();
 		

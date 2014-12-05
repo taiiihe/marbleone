@@ -7,6 +7,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/idHeaderLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
@@ -19,7 +20,7 @@
             android:layout_weight="1"
             android:text="@string/time_zero"
             android:textSize="25sp" />
-        
+
         <ImageView
             android:id="@+id/idBtnMusicMute"
             android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
             android:contentDescription="@string/title_mute"
             android:onClick="toggleMusic"
             android:src="@drawable/ic_music" />
-        
+
         <ImageView
             android:id="@+id/idBtnMute"
             android:layout_width="wrap_content"
@@ -37,24 +38,24 @@
             android:contentDescription="@string/title_mute"
             android:onClick="toggleSound"
             android:src="@drawable/ic_sound" />
-        
+
         <ImageView
             android:id="@+id/idBtnPause"
             android:layout_width="wrap_content"
-            android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:contentDescription="@string/title_pause"
             android:src="@drawable/pause" />
-
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/idPebbleBoard"
         android:layout_width="wrap_content"
         android:layout_height="0sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:background="#FFFFFFFF"
-	android:id="@+id/idSlotBoard"
-        android:layout_gravity="center_horizontal" >
+        android:background="#FFFFFFFF" >
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -62,754 +63,313 @@
             android:layout_alignParentLeft="false"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:background="#00FFFFFF" >
-
-            <ImageView
-                android:id="@+id/idSlots00"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots01"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/idSlots00"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots02"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/idSlots01"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots03"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/idSlots02"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots04"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/idSlots03"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots05"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/idSlots04"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots06"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/idSlots05"
-                android:layout_margin="2sp"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots10"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots00"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots11"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots10"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots01"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots12"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots11"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots02"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots13"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots12"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots03"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots14"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots13"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots04"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots15"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots14"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots05"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots16"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots15"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots06"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots20"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots10"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots21"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots20"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots11"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots22"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots21"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots12"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots23"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots22"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots13"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots24"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots23"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots14"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots25"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots24"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots15"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots26"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots25"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots16"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots30"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots20"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots31"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots30"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots21"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots32"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots31"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots22"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots33"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots32"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots23"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots34"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots33"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots24"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots35"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots34"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots25"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots36"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots35"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots26"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots40"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots30"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots41"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots40"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots31"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots42"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots41"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots32"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots43"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots42"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots33"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots44"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots43"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots34"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots45"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots44"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots35"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots46"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots45"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots36"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots50"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots40"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots51"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots50"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots41"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots52"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots51"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots42"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots53"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots52"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots43"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots54"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots53"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots44"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots55"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots54"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots45"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots56"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots55"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots46"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots60"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_alignParentTop="true"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots50"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots61"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots60"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots51"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots62"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots61"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots52"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots63"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots62"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots53"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots64"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots63"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots54"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_no_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots65"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots64"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots55"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-
-            <ImageView
-                android:id="@+id/idSlots66"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_below="@+id/idSlots65"
-                android:layout_margin="2sp"
-                android:layout_toRightOf="@+id/idSlots56"
-                android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-	    android:id="@+id/idGameBoard"
             android:layout_gravity="center_horizontal"
             android:background="#00FFFFFF" >
 
             <ImageView
                 android:id="@+id/idSlot00"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot01"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/idSlot00"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot02"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/idSlot01"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot03"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/idSlot02"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot04"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/idSlot03"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot05"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/idSlot04"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot06"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/idSlot05"
                 android:layout_margin="2sp"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot07"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idSlot06"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot08"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idSlot07"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot10"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot00"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot11"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot10"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot01"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot12"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot11"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot02"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot13"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot12"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot03"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot14"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot13"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot04"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot15"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot14"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot05"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot16"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot15"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot06"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot17"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot16"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot07"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot18"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot17"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot08"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot20"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot10"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot21"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot20"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot11"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot22"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot21"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot12"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot23"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot22"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot13"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot24"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot23"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot14"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot25"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot24"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot15"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot26"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot25"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot16"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot27"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot26"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot17"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot28"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot27"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot18"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot30"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot20"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot31"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot30"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot21"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot32"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot31"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot22"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot33"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot32"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot23"
@@ -818,252 +378,1325 @@
 
             <ImageView
                 android:id="@+id/idSlot34"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot33"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot24"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot35"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot34"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot25"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot36"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot35"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot26"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot37"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot36"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot27"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot38"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot37"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot28"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot40"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot30"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot41"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot40"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot31"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot42"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot41"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot32"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot43"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot42"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot33"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot44"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot43"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot34"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot45"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot44"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot35"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot46"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot45"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot36"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot47"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot46"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot37"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot48"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot47"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot38"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot50"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot40"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot51"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot50"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot41"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot52"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot51"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot42"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot53"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot52"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot43"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot54"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot53"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot44"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot55"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot54"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot45"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot56"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot55"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot46"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot57"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot56"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot47"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot58"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot57"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot48"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot60"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_alignParentTop="true"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot50"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot61"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot60"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot51"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot62"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot61"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot52"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot63"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot62"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot53"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot64"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot63"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot54"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_pebble_blue" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot65"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot64"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot55"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
 
             <ImageView
                 android:id="@+id/idSlot66"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/idSlot65"
                 android:layout_margin="2sp"
                 android:layout_toRightOf="@+id/idSlot56"
                 android:contentDescription="@string/pebble"
-                android:src="@drawable/ic_empty_pebble" />
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot67"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot66"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot57"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot68"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot67"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot58"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot70"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot60"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot71"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot70"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot61"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot72"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot71"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot62"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot73"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot72"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot63"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot74"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot73"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot64"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot75"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot74"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot65"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot76"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot75"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot66"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot77"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot76"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot67"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot78"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot77"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot68"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot80"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot70"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot81"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot80"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot71"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot82"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot81"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot72"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot83"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot82"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot73"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot84"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot83"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot74"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot85"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot84"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot75"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot86"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot85"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot76"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot87"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot86"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot77"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idSlot88"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idSlot87"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idSlot78"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/idGameBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#00FFFFFF" >
+
+            <ImageView
+                android:id="@+id/idPebble00"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble01"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble00"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble02"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble01"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble03"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble02"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble04"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble03"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble05"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble04"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble06"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble05"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble07"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble06"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble08"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/idPebble07"
+                android:layout_margin="2sp"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble10"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble00"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble11"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble10"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble01"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble12"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble11"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble02"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble13"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble12"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble03"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble14"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble13"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble04"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble15"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble14"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble05"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble16"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble15"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble06"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble17"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble16"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble07"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble18"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble17"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble08"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble20"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble10"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble21"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble20"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble11"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble22"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble21"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble12"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble23"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble22"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble13"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble24"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble23"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble14"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble25"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble24"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble15"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble26"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble25"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble16"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble27"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble26"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble17"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble28"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble27"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble18"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble30"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble20"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble31"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble30"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble21"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble32"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble31"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble22"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble33"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble32"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble23"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble34"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble33"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble24"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble35"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble34"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble25"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble36"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble35"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble26"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble37"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble36"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble27"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble38"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble37"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble28"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble40"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble30"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble41"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble40"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble31"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble42"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble41"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble32"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble43"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble42"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble33"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble44"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble43"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble34"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble45"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble44"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble35"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble46"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble45"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble36"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble47"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble46"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble37"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble48"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble47"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble38"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble50"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble40"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble51"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble50"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble41"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble52"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble51"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble42"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble53"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble52"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble43"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble54"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble53"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble44"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble55"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble54"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble45"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble56"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble55"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble46"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble57"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble56"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble47"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble58"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble57"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble48"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble60"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble50"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble61"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble60"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble51"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble62"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble61"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble52"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble63"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble62"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble53"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble64"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble63"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble54"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble65"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble64"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble55"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble66"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble65"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble56"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble67"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble66"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble57"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble68"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble67"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble58"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble70"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble60"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble71"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble70"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble61"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble72"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble71"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble62"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble73"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble72"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble63"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble74"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble73"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble64"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble75"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble74"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble65"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble76"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble75"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble66"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble77"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble76"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble67"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble78"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble77"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble68"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble80"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_alignParentTop="true"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble70"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble81"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble80"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble71"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble82"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble81"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble72"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble83"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble82"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble73"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble84"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble83"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble74"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble85"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble84"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble75"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble86"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble85"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble76"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble87"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble86"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble77"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
+
+            <ImageView
+                android:id="@+id/idPebble88"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_below="@+id/idPebble87"
+                android:layout_margin="2sp"
+                android:layout_toRightOf="@+id/idPebble78"
+                android:contentDescription="@string/pebble"
+                android:src="@drawable/ic_no_pebble" />
         </RelativeLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/idAdLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#ffffff"
-        android:orientation="vertical" >
-    </LinearLayout>
 </LinearLayout>

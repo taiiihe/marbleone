@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    android:background="#00000000"
-    android:orientation="vertical" >
+    android:background="#00000000" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +46,13 @@
             android:layout_margin="10sp" android:textSize="50sp"
             android:background="@drawable/blue_button"
             android:text="@string/title_marble_color" />
+         <Button
+            android:id="@+id/btnSelectBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp" android:textSize="50sp"
+            android:background="@drawable/blue_button"
+            android:text="@string/title_select_board" />
 
         <Button
             android:id="@+id/btnRestart"
@@ -75,4 +81,4 @@
             android:text="@string/title_exit" />
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

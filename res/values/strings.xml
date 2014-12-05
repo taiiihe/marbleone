@@ -41,8 +41,10 @@
     <string name="title_game_end">I had scored %s on Marble One </string>
     <string name="title_to_download">To download Marble One visit http://marbleone.easwareapps.com</string>
     <string name="title_share_image">Share Image</string>
+    <string name="title_next">Next Unfinished Game</string>
     <string name="title_cancel">Cancel</string>
     <string name="title_write_something">Write Something</string>
     <string name="title_exit">Exit</string>
+    <string name="title_select_board">Select Board</string>
 
 </resources>
